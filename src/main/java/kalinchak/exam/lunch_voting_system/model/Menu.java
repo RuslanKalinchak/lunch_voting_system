@@ -3,33 +3,35 @@ package kalinchak.exam.lunch_voting_system.model;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
+import lombok.ToString;
 
 import javax.persistence.*;
 import java.time.LocalDateTime;
 import java.util.Set;
 
 @Entity
-@Table(name = "menu")
+@Table(name = "MENU")
 @Setter
 @Getter
 @NoArgsConstructor
+@ToString
 public class Menu {
 
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
-    @Column(name = "menu_id")
+    @Column(name = "MENU_ID")
     private Long menuId;
 
-    @Column(name = "menu_name")
+    @Column(name = "MENU_NAME")
     private String menuName;
 
-    @Column(name = "menu_date")
+    @Column(name = "MENU_DATE")
     private LocalDateTime menuDate;
 
-    @OneToMany(fetch = FetchType.LAZY, mappedBy = "menu")
+    @OneToMany(mappedBy = "menu")
     private Set<Food> foods;
 
-    @ManyToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name = "restaurant_id")
+    @ManyToOne
+    @JoinColumn(name = "RESTAURANT_ID")
     private Restaurant restaurant;
 }

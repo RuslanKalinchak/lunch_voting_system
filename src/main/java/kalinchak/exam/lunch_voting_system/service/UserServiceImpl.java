@@ -4,9 +4,7 @@ import kalinchak.exam.lunch_voting_system.dao.RoleDao;
 import kalinchak.exam.lunch_voting_system.dao.UserDao;
 import kalinchak.exam.lunch_voting_system.model.Role;
 import kalinchak.exam.lunch_voting_system.model.User;
-import lombok.Data;
 import lombok.RequiredArgsConstructor;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Service;
 

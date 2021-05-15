@@ -3,27 +3,29 @@ package kalinchak.exam.lunch_voting_system.model;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
+import lombok.ToString;
 
 import javax.persistence.*;
 
 @Entity
-@Table(name = "foods")
+@Table(name = "FOODS")
 @Setter
 @Getter
 @NoArgsConstructor
+@ToString
 public class Food {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
-    @Column(name = "food_id")
+    @Column(name = "FOOD_ID")
     private Long foodId;
 
-    @Column(name = "food_name")
+    @Column(name = "FOOD_NAME")
     private String foodName;
 
-    @Column(name = "food_price")
+    @Column(name = "FOOD_PRICE")
     private Long price;
 
-    @ManyToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name = "menu_id")
+    @ManyToOne
+    @JoinColumn(name = "MENU_ID")
     private Menu menu;
 }

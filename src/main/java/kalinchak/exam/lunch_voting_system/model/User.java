@@ -3,25 +3,28 @@ package kalinchak.exam.lunch_voting_system.model;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
+import lombok.ToString;
 
 import javax.persistence.*;
 import java.util.Set;
 
-@Entity
-@Table(name = "users")
+@Entity (name = "USERS")
+@Table(name = "USERS")
 @Setter
 @Getter
 @NoArgsConstructor
+@ToString
 public class User {
 
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
+    @Column (name = "USER_ID")
     private Long id;
 
-    @Column(name = "username")
+    @Column(name = "USER_NAME")
     private String username;
 
-    @Column(name = "password")
+    @Column(name = "PASSWORD")
     private String password;
 
     @Transient
