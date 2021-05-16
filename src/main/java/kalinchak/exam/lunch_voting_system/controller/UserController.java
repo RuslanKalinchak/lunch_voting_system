@@ -1,9 +1,7 @@
 package kalinchak.exam.lunch_voting_system.controller;
 
-import kalinchak.exam.lunch_voting_system.model.Menu;
-import kalinchak.exam.lunch_voting_system.model.MenuDto;
-import kalinchak.exam.lunch_voting_system.model.User;
-import kalinchak.exam.lunch_voting_system.model.VotingDto;
+import kalinchak.exam.lunch_voting_system.model.*;
+import kalinchak.exam.lunch_voting_system.service.AdminService;
 import kalinchak.exam.lunch_voting_system.service.SecurityService;
 import kalinchak.exam.lunch_voting_system.service.UserService;
 import kalinchak.exam.lunch_voting_system.validator.UserValidator;
@@ -87,5 +85,14 @@ public class UserController {
     @RequestMapping(value = "/voting-result", method = RequestMethod.GET)
     public Menu getWinnerMenu() {
         return userService.getWinnerMenu();
+    }
+
+    private final AdminService adminService;
+
+    @RequestMapping(value = "/restaurant", method = RequestMethod.POST)
+    @ResponseBody
+    Menu saveMenu(@RequestBody MenuDto menu,
+                  @PathVariable(value = "id") Long restaurantId) {
+        return adminService.saveMenu(menu, restaurantId);
     }
 }
