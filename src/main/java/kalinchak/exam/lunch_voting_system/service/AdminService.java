@@ -28,7 +28,7 @@ public class AdminService {
     private Menu createMenu(MenuDto menuDto, Long restaurantId) {
         Menu menu = new Menu();
         menu.setId(menuDto.getMenuId());
-        menu.setMenuName(menuDto.getMenuName());
+        menu.setName(menuDto.getMenuName());
         menu.setDate(LocalDateTime.now());
         menu.setRestaurant(restaurantDao.findRestaurantById(restaurantId));
         menu.setFoods(createFoodSet(menuDto.getFoods(), menuDto.getMenuId()));

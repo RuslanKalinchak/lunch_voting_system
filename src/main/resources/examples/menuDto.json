@@ -1,49 +1,49 @@
 [
   {
-    "MENU_ID": 1,
-    "MENU_NAME": "American dishes",
-    "FOODS": [
+    "menuId": 1,
+    "menuName": "American dishes",
+    "foods": [
       {
-        "FOOD_ID": 1,
-        "FOOD_NAME": "Apple Pie",
-        "PRICE": 100
+        "foodId": 1,
+        "foodName": "Apple Pie",
+        "price": 100
       },
       {
-        "FOOD_ID": 2,
-        "FOOD_NAME": "Fish and Chips",
-        "PRICE": 250
+        "foodId": 2,
+        "foodName": "Fish and Chips",
+        "price": 250
       }
     ]
   },
   {
-    "MENU_ID": 2,
-    "MENU_NAME": "Chine dishes",
-    "FOODS": [
+    "menuId": 2,
+    "menuName": "Chine dishes",
+    "foods": [
       {
-        "FOOD_ID": 3,
-        "FOOD_NAME": "Sichuan Pork",
-        "PRICE": 180
+        "foodId": 3,
+        "foodName": "Sichuan Pork",
+        "price": 180
       },
       {
-        "FOOD_ID": 4,
-        "FOOD_NAME": "Peking Roasted Duck",
-        "PRICE": 140
+        "foodId": 4,
+        "foodName": "Peking Roasted Duck",
+        "price": 140
       }
     ]
   },
   {
-    "MENU_ID": 3,
-    "MENU_NAME": "Italy dishes",
-    "FOODS": [
+    "menuId": 3,
+    "menuName": "Italy dishes",
+    "foods": [
       {
-        "FOOD_ID": 5,
-        "FOOD_NAME": "Cornish Pasty",
-        "PRICE": 150
+        "foodId": 5,
+        "foodName": "Cornish Pasty",
+        "price": 150
       },
       {
-        "FOOD_ID": 6,
-        "FOOD_NAME": "Pizza",
-        "PRICE": 200
+        "foodId": 6,
+        "foodName": "Pizza",
+        "price": 200
       }
     ]
   }

@@ -3,6 +3,7 @@ package kalinchak.exam.lunch_voting_system.service;
 import kalinchak.exam.lunch_voting_system.dao.MenuDao;
 import kalinchak.exam.lunch_voting_system.dao.RoleDao;
 import kalinchak.exam.lunch_voting_system.dao.UserDao;
+import kalinchak.exam.lunch_voting_system.dao.VotingDao;
 import kalinchak.exam.lunch_voting_system.model.*;
 import lombok.RequiredArgsConstructor;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
@@ -21,6 +22,7 @@ public class UserServiceImpl implements UserService {
     private final UserDao userDao;
     private final RoleDao roleDao;
     private final MenuDao menuDao;
+    private final VotingDao votingDao;
     private final BCryptPasswordEncoder bCryptPasswordEncoder;
 
     @Override
@@ -42,7 +44,7 @@ public class UserServiceImpl implements UserService {
         return getActualMenuList().stream().map(menu -> {
             MenuDto menuDto = new MenuDto();
             menuDto.setMenuId(menu.getId());
-            menuDto.setMenuName(menu.getMenuName());
+            menuDto.setMenuName(menu.getName());
             menuDto.setFoods(createFoodDtoList(menu.getFoods()));
             return menuDto;
         }).collect(Collectors.toList());
@@ -61,4 +63,28 @@ public class UserServiceImpl implements UserService {
             return foodDto;
         }).collect(Collectors.toList());
     }
+
+    @Override
+    public Voting doVote(VotingDto votingDto) {
+        return votingDao.save(createVoting(votingDto));
+    }
+
+    @Override
+    public Menu getWinnerMenu() {
+        return menuDao.findMenuById(selectMenuId());
+    }
+
+    private Long selectMenuId() {
+        return votingDao.findFirstMenuId().longValue();
+    }
+
+    public Voting createVoting(VotingDto votingDto) {
+        Voting voting = new Voting();
+        voting.setUser(userDao.findByUsername(votingDto.getUsername()));
+        voting.setMenu(menuDao.findMenuByName(votingDto.getMenuName()));
+        voting.setDate(LocalDateTime.now());
+        return voting;
+    }
+
+
 }

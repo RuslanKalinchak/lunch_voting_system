@@ -1,21 +1,23 @@
 package kalinchak.exam.lunch_voting_system.controller;
 
+import kalinchak.exam.lunch_voting_system.model.Menu;
 import kalinchak.exam.lunch_voting_system.model.MenuDto;
 import kalinchak.exam.lunch_voting_system.model.User;
+import kalinchak.exam.lunch_voting_system.model.VotingDto;
 import kalinchak.exam.lunch_voting_system.service.SecurityService;
 import kalinchak.exam.lunch_voting_system.service.UserService;
 import kalinchak.exam.lunch_voting_system.validator.UserValidator;
 import lombok.RequiredArgsConstructor;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import org.springframework.security.access.annotation.Secured;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
-import org.springframework.web.bind.annotation.ModelAttribute;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.*;
 
 import javax.validation.Valid;
-import java.awt.*;
+import java.time.LocalTime;
 import java.util.List;
 
 @Controller
@@ -65,5 +67,25 @@ public class UserController {
     @RequestMapping(value = "/menu-list", method = RequestMethod.GET)
     public List<MenuDto> getMenuList() {
         return userService.getMenuList();
+    }
+
+    @Secured("ROLE_USER")
+    @RequestMapping(value = "/voting", method = RequestMethod.POST)
+    @ResponseBody
+    public ResponseEntity doVote(@RequestBody VotingDto votingDto) {
+        LocalTime currentTime = LocalTime.now();
+        LocalTime endTime = LocalTime.of(11, 00, 01);
+        if (currentTime.isAfter(endTime)) {
+            return new ResponseEntity("You late. You can vote tomorrow", HttpStatus.OK);
+        } else {
+            userService.doVote(votingDto);
+            return new ResponseEntity("Your vote has been counted", HttpStatus.OK);
+        }
+    }
+
+    @Secured("ROLE_USER")
+    @RequestMapping(value = "/voting-result", method = RequestMethod.GET)
+    public Menu getWinnerMenu() {
+        return userService.getWinnerMenu();
     }
 }

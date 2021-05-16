@@ -13,4 +13,6 @@ public interface MenuDao extends JpaRepository<Menu, Long> {
     Menu findMenuById(Long menuId);
 
     List<Menu> findAllByDate (LocalDateTime dateTime);
+
+    Menu findMenuByName(String name);
 }

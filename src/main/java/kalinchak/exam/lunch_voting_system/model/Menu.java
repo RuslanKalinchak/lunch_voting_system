@@ -21,7 +21,7 @@ public class Menu {
     private Long id;
 
     @Column(name = "MENU_NAME")
-    private String menuName;
+    private String name;
 
     @Column(name = "MENU_DATE")
     private LocalDateTime date;
