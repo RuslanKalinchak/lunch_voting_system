@@ -9,7 +9,7 @@ import javax.persistence.*;
 import java.util.Set;
 
 @Entity
-@Table (name = "RESTAURANTS")
+@Table (name = "RESTAURANTS", schema ="mysqldb")
 @Setter
 @Getter
 @NoArgsConstructor
@@ -17,7 +17,7 @@ import java.util.Set;
 public class Restaurant {
 
     @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "RESTAURANT_ID")
     private Long restaurantId;
 

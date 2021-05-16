@@ -10,7 +10,7 @@ import java.time.LocalDateTime;
 import java.util.Set;
 
 @Entity
-@Table(name = "MENU")
+@Table(name = "MENU", schema ="mysqldb")
 @Setter
 @Getter
 @NoArgsConstructor
@@ -18,7 +18,7 @@ import java.util.Set;
 public class Menu {
 
     @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "MENU_ID")
     private Long menuId;
 

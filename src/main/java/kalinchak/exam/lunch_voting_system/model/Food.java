@@ -8,14 +8,14 @@ import lombok.ToString;
 import javax.persistence.*;
 
 @Entity
-@Table(name = "FOODS")
+@Table(name = "FOODS", schema ="mysqldb")
 @Setter
 @Getter
 @NoArgsConstructor
 @ToString
 public class Food {
     @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "FOOD_ID")
     private Long foodId;
 

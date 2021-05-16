@@ -9,7 +9,7 @@ import javax.persistence.*;
 import java.util.Set;
 
 @Entity (name = "USERS")
-@Table(name = "USERS")
+@Table(name = "USERS", schema ="mysqldb")
 @Setter
 @Getter
 @NoArgsConstructor
@@ -17,14 +17,14 @@ import java.util.Set;
 public class User {
 
     @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column (name = "USER_ID")
     private Long id;
 
     @Column(name = "USER_NAME")
     private String username;
 
-    @Column(name = "PASSWORD")
+    @Column(name = "PASSWORD", length = 22)
     private String password;
 
     @Transient

@@ -9,7 +9,7 @@ import javax.persistence.*;
 import java.util.Set;
 
 @Entity
-@Table(name = "ROLES")
+@Table(name = "ROLES", schema ="mysqldb")
 @Setter
 @Getter
 @NoArgsConstructor
@@ -17,7 +17,7 @@ import java.util.Set;
 public class Role {
 
     @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column (name = "ROLE_ID")
     private Long id;
 

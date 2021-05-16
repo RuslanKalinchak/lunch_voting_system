@@ -5,11 +5,11 @@
        xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd
 		http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context.xsd">
 
-    <import resource="app-config-mvc.xml"/>
+    <import resource="appconfig-mvc.xml"/>
 
-    <import resource="app-config-data.xml"/>
+    <import resource="appconfig-data.xml"/>
 
-    <import resource="app-config-security.xml"/>
+    <import resource="appconfig-security.xml"/>
 
     <context:component-scan base-package="kalinchak.exam.lunch_voting_system.*"/>
 
