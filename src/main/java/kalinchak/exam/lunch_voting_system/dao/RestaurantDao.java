@@ -1,18 +1,13 @@
 package kalinchak.exam.lunch_voting_system.dao;
 
-import kalinchak.exam.lunch_voting_system.model.Menu;
 import kalinchak.exam.lunch_voting_system.model.Restaurant;
+import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 
 @Repository
-public interface AdminDao {
+public interface RestaurantDao extends JpaRepository<Restaurant, Long> {
 
-    Restaurant saveRestaurant(Restaurant restaurant);
+    Restaurant save(Restaurant restaurant);
 
     Restaurant findRestaurantById(Long restaurantId);
-
-    Menu saveMenu(Menu menu);
-
-    Menu findMenuById(Long menuId);
-
 }

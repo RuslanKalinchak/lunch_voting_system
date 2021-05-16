@@ -1,6 +1,7 @@
 package kalinchak.exam.lunch_voting_system.service;
 
-import kalinchak.exam.lunch_voting_system.dao.AdminDao;
+import kalinchak.exam.lunch_voting_system.dao.MenuDao;
+import kalinchak.exam.lunch_voting_system.dao.RestaurantDao;
 import kalinchak.exam.lunch_voting_system.model.*;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
@@ -13,22 +14,23 @@ import java.util.stream.Collectors;
 @Service
 @RequiredArgsConstructor
 public class AdminService {
-    private final AdminDao adminDao;
+    private final MenuDao menuDao;
+    private final RestaurantDao restaurantDao;
 
     public Restaurant saveRestaurant(Restaurant restaurant) {
-        return adminDao.saveRestaurant(restaurant);
+        return restaurantDao.save(restaurant);
     }
 
     public Menu saveMenu(MenuDto menuDto, Long restaurantId) {
-        return adminDao.saveMenu(createMenu(menuDto, restaurantId));
+        return menuDao.save(createMenu(menuDto, restaurantId));
     }
 
     private Menu createMenu(MenuDto menuDto, Long restaurantId) {
         Menu menu = new Menu();
-        menu.setMenuId(menuDto.getMenuId());
+        menu.setId(menuDto.getMenuId());
         menu.setMenuName(menuDto.getMenuName());
         menu.setMenuDate(LocalDateTime.now());
-        menu.setRestaurant(adminDao.findRestaurantById(restaurantId));
+        menu.setRestaurant(restaurantDao.findRestaurantById(restaurantId));
         menu.setFoods(createFoodSet(menuDto.getFoods(), menuDto.getMenuId()));
         return menu;
     }
@@ -39,7 +41,7 @@ public class AdminService {
                     food.setFoodId(foodDto.getFoodId());
                     food.setFoodName(foodDto.getFoodName());
                     food.setPrice(foodDto.getPrice());
-                    food.setMenu(adminDao.findMenuById(menuId));
+                    food.setMenu(menuDao.findMenuById(menuId));
                     return food;
                 }
         ).collect(Collectors.toSet());
