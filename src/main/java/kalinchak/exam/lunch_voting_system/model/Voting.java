@@ -5,25 +5,28 @@ import lombok.NoArgsConstructor;
 import lombok.Setter;
 
 import javax.persistence.*;
+import java.time.LocalDateTime;
 
 @Entity
-@Table(name = "FOODS", schema = "mysqldb")
+@Table(name = "VOTING_SYSTEM", schema = "mysqldb")
 @Setter
 @Getter
 @NoArgsConstructor
-public class Food {
+public class Voting {
+
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name = "FOOD_ID")
-    private Long foodId;
+    @Column(name = "VOTING_ID")
+    private Long id;
 
-    @Column(name = "FOOD_NAME")
-    private String foodName;
+    @Column(name = "VOTING_DATE")
+    private LocalDateTime date;
 
-    @Column(name = "FOOD_PRICE")
-    private Long price;
-
-    @ManyToOne
+    @OneToOne
     @JoinColumn(name = "MENU_ID")
     private Menu menu;
+
+    @ManyToOne
+    @JoinColumn(name = "USER_ID")
+    private User user;
 }

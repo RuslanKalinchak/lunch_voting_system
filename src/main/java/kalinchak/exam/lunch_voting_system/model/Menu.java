@@ -3,7 +3,6 @@ package kalinchak.exam.lunch_voting_system.model;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
-import lombok.ToString;
 
 import javax.persistence.*;
 import java.time.LocalDateTime;
@@ -33,4 +32,8 @@ public class Menu {
     @ManyToOne
     @JoinColumn(name = "RESTAURANT_ID")
     private Restaurant restaurant;
+
+    @OneToOne(cascade = CascadeType.ALL)
+    @PrimaryKeyJoinColumn
+    private Voting voting;
 }

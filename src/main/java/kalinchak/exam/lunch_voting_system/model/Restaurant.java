@@ -3,7 +3,6 @@ package kalinchak.exam.lunch_voting_system.model;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
-import lombok.ToString;
 
 import javax.persistence.*;
 import java.util.Set;
