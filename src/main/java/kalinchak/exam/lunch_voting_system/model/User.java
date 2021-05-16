@@ -3,24 +3,24 @@ package kalinchak.exam.lunch_voting_system.model;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
-import lombok.ToString;
 
 import javax.persistence.*;
+import javax.validation.constraints.Email;
 import java.util.Set;
 
-@Entity (name = "USERS")
-@Table(name = "USERS", schema ="mysqldb")
+@Entity(name = "USERS")
+@Table(name = "USERS", schema = "mysqldb")
 @Setter
 @Getter
 @NoArgsConstructor
-@ToString
 public class User {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column (name = "USER_ID")
+    @Column(name = "USER_ID")
     private Long id;
 
+    @Email(message = "Email should be valid")
     @Column(name = "USER_NAME")
     private String username;
 

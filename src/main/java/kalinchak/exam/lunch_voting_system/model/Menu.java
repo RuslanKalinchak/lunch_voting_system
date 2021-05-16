@@ -10,11 +10,10 @@ import java.time.LocalDateTime;
 import java.util.Set;
 
 @Entity
-@Table(name = "MENU", schema ="mysqldb")
+@Table(name = "MENU", schema = "mysqldb")
 @Setter
 @Getter
 @NoArgsConstructor
-@ToString
 public class Menu {
 
     @Id

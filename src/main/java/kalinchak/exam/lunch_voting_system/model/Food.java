@@ -8,11 +8,10 @@ import lombok.ToString;
 import javax.persistence.*;
 
 @Entity
-@Table(name = "FOODS", schema ="mysqldb")
+@Table(name = "FOODS", schema = "mysqldb")
 @Setter
 @Getter
 @NoArgsConstructor
-@ToString
 public class Food {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)

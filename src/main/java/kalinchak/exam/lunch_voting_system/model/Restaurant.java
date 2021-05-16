@@ -9,11 +9,10 @@ import javax.persistence.*;
 import java.util.Set;
 
 @Entity
-@Table (name = "RESTAURANTS", schema ="mysqldb")
+@Table(name = "RESTAURANTS", schema = "mysqldb")
 @Setter
 @Getter
 @NoArgsConstructor
-@ToString
 public class Restaurant {
 
     @Id
