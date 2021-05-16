@@ -25,7 +25,7 @@ public class Menu {
     private String menuName;
 
     @Column(name = "MENU_DATE")
-    private LocalDateTime menuDate;
+    private LocalDateTime date;
 
     @OneToMany(mappedBy = "menu")
     private Set<Food> foods;

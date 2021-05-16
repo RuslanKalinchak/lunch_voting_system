@@ -29,7 +29,7 @@ public class AdminService {
         Menu menu = new Menu();
         menu.setId(menuDto.getMenuId());
         menu.setMenuName(menuDto.getMenuName());
-        menu.setMenuDate(LocalDateTime.now());
+        menu.setDate(LocalDateTime.now());
         menu.setRestaurant(restaurantDao.findRestaurantById(restaurantId));
         menu.setFoods(createFoodSet(menuDto.getFoods(), menuDto.getMenuId()));
         return menu;
